@@ -9,7 +9,7 @@ cd chemin_vers_le_dossier
 ```
 - créer le projet avec Symfony CLI (pas besoin de créer le dossier du projet) :
 ```
-symfony new --webapp nom_du_projet --version-5.4
+symfony new --webapp nom_du_projet --version=5.4
 ```
 -créer le projet avec Composer (pas besoin de créer le dossier du projet)
 ```
@@ -41,9 +41,9 @@ git commit -m "message_du_commit"
 ```
 git pull origin main
 ```
--envoyer des modifications :
+-envoyer des modifications (ou (master)) :
 ```
-git push origin main ou (master)
+git push origin main
 ```
 -voir la liste des commits (flèches haut et bas pour naviguer dans la liste, q pour quitter) :
 ```
@@ -95,4 +95,47 @@ composer remove [package présent dans composer.json]
 - Pour créer une nouvelle page, on utilise un controller (note, pour accéder à cette page, on rajoute le nom du dossier dans la barre d'adresse, ex : si le nom est Home, dans le lien on aura ...public/Home)
 ```
 php bin/console make:controller nom_du_fichier
+```
+
+## BASE DE DONNÉES
+
+- .env, créer le chemin d'accès dans ce fichier : ([BDD_utilisé]://[nom_utilisateur]:[mdp_utilisateur]@[adresse_connexion]:[port_connexion]/[nom_BDD]?serverVersion=5.7)
+```
+DATABASE_URL="mysql://root:@127.0.0.1:3306/symfony_dwwm20?serverVersion=5.7"
+```
+
+- Créer la BDD avec la commande doctrine
+```
+php bin/console doctrine:database:create
+```
+
+- Créer une entité (table) (le fichier sera créer dans le dossier : src/Entity):
+```
+php bin/console make:entity nom_de_l_entite
+```
+(note : suivre les indications selon les besoins de la BDD)
+(Pour lier deux tables, utiliser le type relation : n;1 / 1;n / n;n / 1;1 )
+
+- migration (vérification + doctrine):
+```
+php bin/console make:migration
+```
+```
+php bin/console doctrine:migrations:migrate
+```
+
+## FIXTURES (à part)
+- installer le bundle (fixtures permet de créer des données bidons pour faire des tests)
+```
+composer require --dev orm-fixtures
+```
+- compléter le fichier srv/DataFixtures/AppFixtures.php
+- persist ()
+- flush()
+- envoyer en base de données (en écrasant)
+```
+```
+
+- bundle pour générer de fausses données :
+```
 ```
