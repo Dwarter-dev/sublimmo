@@ -50,6 +50,24 @@ git push origin main ou (master)
 git log
 ```
 
+## SYMFONY SERVER
+
+- Démarrer le serveur (moins pratique qu'en arrière-plan): (Ctrl + C pour quitter)
+```
+symfony server:start
+```
+
+- Démarrer le serveur en arrière plan (règlera certains soucis comparer au démarrage normal)
+```
+symfony server:start -d
+```
+
+- Arrêter le service :
+```
+symfony server:stop
+```
+
+
 ## RÉCUPÉRER UN FICHIER
 
 - Télecharger le zip ou faire un pull sur un nouveau dossier
@@ -62,7 +80,7 @@ git remote add origin https://github.com/nom_d_utilisateur/nom_du_dépot_distant
 
 - Recréer le fichier .env à la racine du projet (avc ses propres informations), les informations importantes sont APP_ENV, APP_SECRET, et DATABASE_URL(éventuellement : MAILER_URL)
 
-- mettre à jour le projet (installer les dépendances, génerer le cache)
+- Mettre à jour le projet (installer les dépendances, génerer le cache)
 ```
 composer install
 ```
@@ -71,4 +89,10 @@ composer install
 
 ```
 composer remove [package présent dans composer.json]
+```
+
+## CONTROLER
+- Pour créer une nouvelle page, on utilise un controller (note, pour accéder à cette page, on rajoute le nom du dossier dans la barre d'adresse, ex : si le nom est Home, dans le lien on aura ...public/Home)
+```
+php bin/console make:controller nom_du_fichier
 ```
