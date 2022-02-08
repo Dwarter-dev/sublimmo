@@ -49,3 +49,34 @@ git push origin main ou (master)
 ```
 git log
 ```
+## Dépôt distant est dépôt local
+
+- pour récupérer le code sur Github créér un dossier avec qui va être pris sur GitHub puis taper
+
+```
+git init
+```
+```
+git remote add origin [avec l'adresse code du git]
+```
+
+- besoins de récupérer c'est infos du .env pour le dossier qu'on récupére récréer un .env est y mettre c'est info
+
+```
+APP_ENV=dev
+APP_SECRET=89fb4fb79b11a4e1984b00c62d33b97e
+DATABASE_URL="postgresql://symfony:ChangeMe@127.0.0.1:5432/app?serverVersion=13&charset=utf8" peut etre = a null
+```
+
+-ensuite pull
+
+```
+git pull origin main
+```
+- est récupérer les infos composer
+
+```
+composer install
+```
+
+- va nous permettre de recréér le dossier var est vendor
