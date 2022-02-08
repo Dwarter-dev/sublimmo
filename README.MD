@@ -50,14 +50,14 @@ git push origin main ou (master)
 git log
 ```
 
-## Récupérer un projet
+## RÉCUPÉRER UN FICHIER
 
 - Télecharger le zip ou faire un pull sur un nouveau dossier
 ```
 git init
 ```
 ```
-git remote add origin [lien du prof]
+git remote add origin https://github.com/nom_d_utilisateur/nom_du_dépot_distant.git
 ```
 
 - Recréer le fichier .env à la racine du projet (avc ses propres informations), les informations importantes sont APP_ENV, APP_SECRET, et DATABASE_URL(éventuellement : MAILER_URL)
