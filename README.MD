@@ -10,7 +10,7 @@ cd chemin_vers_le_dossier
 - créer le projet avec Symfony CLI (pas besoin de créer le dossier du projet) :
 ```
 symfony new --webapp nom_du_projet --version-5.4
-```s
+```
 -créer le projet avec Composer (pas besoin de créer le dossier du projet)
 ```
 composer create-projet symfony/website-skeleton nom_du_projet ^5.4
@@ -49,34 +49,26 @@ git push origin main ou (master)
 ```
 git log
 ```
-## Dépôt distant est dépôt local
 
-- pour récupérer le code sur Github créér un dossier avec qui va être pris sur GitHub puis taper
+## Récupérer un projet
 
+- Télecharger le zip ou faire un pull sur un nouveau dossier
 ```
 git init
 ```
 ```
-git remote add origin [avec l'adresse code du git]
+git remote add origin [lien du prof]
 ```
 
-- besoins de récupérer c'est infos du .env pour le dossier qu'on récupére récréer un .env est y mettre c'est info
+- Recréer le fichier .env à la racine du projet (avc ses propres informations), les informations importantes sont APP_ENV, APP_SECRET, et DATABASE_URL(éventuellement : MAILER_URL)
 
-```
-APP_ENV=dev
-APP_SECRET=89fb4fb79b11a4e1984b00c62d33b97e
-DATABASE_URL="postgresql://symfony:ChangeMe@127.0.0.1:5432/app?serverVersion=13&charset=utf8" peut etre = a null
-```
-
--ensuite pull
-
-```
-git pull origin main
-```
-- est récupérer les infos composer
-
+- mettre à jour le projet (installer les dépendances, génerer le cache)
 ```
 composer install
 ```
 
-- va nous permettre de recréér le dossier var est vendor
+## Supprimer un package
+
+```
+composer remove [package présent dans composer.json]
+```
