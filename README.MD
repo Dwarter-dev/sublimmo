@@ -132,10 +132,18 @@ composer require --dev orm-fixtures
 - compléter le fichier srv/DataFixtures/AppFixtures.php
 - persist ()
 - flush()
-- envoyer en base de données (en écrasant)
+
+- envoyer en base de données (en écrasant les données existantes)
 ```
+php bin/console doctrine:fixtures:load
+```
+
+- envoyer en base de données (en ajoutant à la suite)
+```
+php bin/console doctrine:fixtures:load --append
 ```
 
 - bundle pour générer de fausses données :
 ```
+composer require fakerphp/faker
 ```
