@@ -1,10 +1,11 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello HomeController!{% endblock %}
+{% block title %}Accueil{% endblock %}
 
 {% block body %}
 
-<header>
+<header id="home-header">
+  <div id="header-img"></div>
   <h1>SUBL'IMMO</h1>
   <h2>L'agence Immobilière 100% en ligne et accesible</h2>
 </header>
@@ -23,7 +24,47 @@
     </div>
   </div>
   <div class="row">
-    {# affichage des logements (par soucis d'adaptabilité, on affichera 6 maisons)#}
+    {% for maison in maisons %} {# maisons est lié au findAll() dans HomeController.php #}
+      {% if loop.index <= 6%} {# affichera uniquement les 6 premières maison #}
+        <div class="col-4 p-3"> <!-- Kitchen sink -->
+          <div class="card">
+            <img src="{{ asset('img/' ~ maison.img1) }}" class="card-img-top" alt="Photo principale {{maison.title}}">
+            <div class="card-body">
+              <h5 class="card-title">{{maison.title}}</h5>
+              <p class="card-text">{{maison.description|u.truncate(90, '...', false)}}</p>
+            </div>
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item">Surface : {{maison.surface}} m²</li>
+              <li class="list-group-item">Pièces : {{maison.rooms}} dont {{maison.bedrooms}} chambres(s)</li>
+              <li class="list-group-item">Prix : {{maison.price|number_format(0, ',', ' ')}} €</li>
+            </ul>
+            <div class="card-body text-center">
+              <a href="#" class="btn btn-outline-secondary">Voir Plus</a>
+            </div>
+          </div>
+        </div>
+      {% endif %}
+    {% endfor %}
+  </div>
+
+  <div class="row text-center p-5">
+    <div class="col-12">
+      <a href="{{ path('maison_index') }}" class="btn btn-outline-secondary">Voir Plus</a>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-12">
+      <h2>Notre équipe</h2>
+    </div>
+  </div>
+
+  <div class="row">
+    <ul>
+      {% for commercial in commerciaux %}
+        <li>{{commercial.name}}</li>
+      {% endfor %}
+    </ul>
   </div>
 
 </main>
