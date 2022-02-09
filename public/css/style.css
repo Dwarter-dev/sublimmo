@@ -1,4 +1,4 @@
-/* ** RESET ** */
+/* **************************************** RESET **************************************** */
 
     * {
         margin: 0;
@@ -7,7 +7,7 @@
         text-decoration: none !important;
     }
 
-/* ** GLOBAL ** */
+/* **************************************** GLOBAL **************************************** */
 
     :root {
         --color-black: #000000;
@@ -23,17 +23,17 @@
         color: var(--color-black);
     }
 
-        a:hover {
-            color: var(--color-grey);
-        }
+    a:hover {
+        color: var(--color-grey);
+    }
 
-/* ** BASE - FOOTER ** /
+/* **************************************** BASE - FOOTER **************************************** */
 
     #copyright {
         font-size: 0.75em;
     }
 
-/ ** HOME - HEADER ** */
+/* **************************************** HOME - HEADER **************************************** */
 
     #home-header #header-img {
         width: 100%;
@@ -45,15 +45,15 @@
         opacity: 0.5;
     }
 
-        #home-header h1,
-        #home-header h2 {
-            position: absolute;
-            top: 8%;
-            width: 100%;
-            text-align: center;
-            font-weight: lighter;
-        }
+    #home-header h1,
+    #home-header h2 {
+        position: absolute;
+        top: 8%;
+        width: 100%;
+        text-align: center;
+        font-weight: lighter;
+    }
 
-        #home-header h2 {
-            top: 92%;
-        }
+    #home-header h2 {
+        top: 92%;
+    }
