@@ -15,25 +15,25 @@ class Maison
     #[ORM\Column(type: 'integer')]
     private $id;
 
-    #[ORM\Column(type: 'string', length: 255)]
+    #[ORM\Column(type: 'string', length: 100)]
     private $title;
 
-    #[ORM\Column(type: 'string', length: 255)]
+    #[ORM\Column(type: 'integer')]
     private $surface;
 
-    #[ORM\Column(type: 'string', length: 255)]
+    #[ORM\Column(type: 'integer')]
     private $rooms;
 
-    #[ORM\Column(type: 'string', length: 255)]
+    #[ORM\Column(type: 'integer')]
     private $bedrooms;
 
-    #[ORM\Column(type: 'string', length: 255)]
+    #[ORM\Column(type: 'integer')]
     private $price;
 
-    #[ORM\Column(type: 'string', length: 255)]
+    #[ORM\Column(type: 'string', length: 30)]
     private $img1;
 
-    #[ORM\Column(type: 'string', length: 255)]
+    #[ORM\Column(type: 'string', length: 30, nullable: true)]
     private $img2;
 
     #[ORM\Column(type: 'text')]
@@ -68,48 +68,48 @@ class Maison
         return $this;
     }
 
-    public function getSurface(): ?string
+    public function getSurface(): ?int
     {
         return $this->surface;
     }
 
-    public function setSurface(string $surface): self
+    public function setSurface(int $surface): self
     {
         $this->surface = $surface;
 
         return $this;
     }
 
-    public function getRooms(): ?string
+    public function getRooms(): ?int
     {
         return $this->rooms;
     }
 
-    public function setRooms(string $rooms): self
+    public function setRooms(int $rooms): self
     {
         $this->rooms = $rooms;
 
         return $this;
     }
 
-    public function getBedrooms(): ?string
+    public function getBedrooms(): ?int
     {
         return $this->bedrooms;
     }
 
-    public function setBedrooms(string $bedrooms): self
+    public function setBedrooms(int $bedrooms): self
     {
         $this->bedrooms = $bedrooms;
 
         return $this;
     }
 
-    public function getPrice(): ?string
+    public function getPrice(): ?int
     {
         return $this->price;
     }
 
-    public function setPrice(string $price): self
+    public function setPrice(int $price): self
     {
         $this->price = $price;
 
