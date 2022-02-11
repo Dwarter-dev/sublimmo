@@ -15,7 +15,7 @@
     {% for maison in maisons %} {# maisons est lié au findAll() dans HomeController.php #}
       <div class="col-4 p-3"> <!-- Kitchen sink -->
         <div class="card">
-          <img src="{{ asset('img/' ~ maison.img1) }}" class="card-img-top" alt="Photo principale {{maison.title}}">
+          <img src="{{ asset('img/maisons/' ~ maison.img1) }}" class="card-img-top" alt="Photo principale {{maison.title}}">
           <div class="card-body">
             <h5 class="card-title">{{maison.title}}</h5>
             <p class="card-text">{{maison.description|u.truncate(90, '...', false)}}</p>
