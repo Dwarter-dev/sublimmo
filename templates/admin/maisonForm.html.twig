@@ -6,8 +6,13 @@
 
   {{ form_start(maisonForm) }}
 
-  <div class="col-12">
-     {{ form_row(maisonForm.title, {'label': 'Titre'}) }}
+  <div class="row">
+    <div class="col-9">
+      {{ form_row(maisonForm.title, {'label': 'Titre'}) }}
+    </div>
+    <div class="col-3">
+       {{ form_row(maisonForm.commercial, {'label': 'Commercial'}) }}
+    </div>
   </div>
 
   <div class="col-12">
@@ -40,7 +45,7 @@
 
   <div class="col-12 d-flex justify-content-end">
     <a href="{{ path('admin_maison_index') }}" class="btn btn-danger m-3">Annuler</a>
-    <butto class="btn btn-success m-3">Créer</button>
+    <button class="btn btn-success m-3">Créer</button>
   </div>
 
   {{ form_end(maisonForm) }}
