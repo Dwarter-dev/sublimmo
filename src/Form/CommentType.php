@@ -1,8 +1,11 @@
 <?php
 
 namespace App\Form;
-
+// Entités
 use App\Entity\Comment;
+use App\Entity\Maison;
+// Classes
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
