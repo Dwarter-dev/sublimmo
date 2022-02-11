@@ -50,6 +50,14 @@ git push origin main
 git log
 ```
 
+## APACHE-PACK
+
+- suite d'outils pour Apache (barre de débug, routing, .htaccess)
+- dans le terminal :
+```
+composer require symfony/apache-pack
+```
+
 ## SYMFONY SERVER
 
 - Démarrer le serveur (moins pratique qu'en arrière-plan): (Ctrl + C pour quitter)
@@ -67,7 +75,6 @@ symfony server:start -d
 symfony server:stop
 ```
 
-
 ## RÉCUPÉRER UN FICHIER
 
 - Télecharger le zip ou faire un pull sur un nouveau dossier
@@ -78,7 +85,7 @@ git init
 git remote add origin https://github.com/nom_d_utilisateur/nom_du_dépot_distant.git
 ```
 
-- Recréer le fichier .env à la racine du projet (avc ses propres informations), les informations importantes sont APP_ENV, APP_SECRET, et DATABASE_URL(éventuellement : MAILER_URL)
+- Recréer le fichier .env à la racine du projet (avc ses propres informations), les informations importantes sont APP_ENV, APP_SECRET, DATABASE_URL et MAILER_URL)
 
 - Mettre à jour le projet (installer les dépendances, génerer le cache)
 ```
@@ -86,9 +93,10 @@ composer install
 ```
 
 ## Supprimer un package
-
+- Concerne uniquement le pack encore)
 ```
 composer remove [package présent dans composer.json]
+composer remove symfony/webpack-encore-bundle
 ```
 
 ## CONTROLER
