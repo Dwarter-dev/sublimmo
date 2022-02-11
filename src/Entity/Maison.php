@@ -133,7 +133,7 @@ class Maison
         return $this->img2;
     }
 
-    public function setImg2(string $img2): self
+    public function setImg2(?string $img2): self
     {
         $this->img2 = $img2;
 
