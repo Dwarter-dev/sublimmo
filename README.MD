@@ -124,6 +124,17 @@ php bin/console make:entity nom_de_l_entite
 (note : suivre les indications selon les besoins de la BDD)
 (Pour lier deux tables, utiliser le type relation : n;1 / 1;n / n;n / 1;1 )
 
+- Exeption : créer un utilisateur :
+```
+php bin/console make:user
+```
+- Modifier l'utilisateur :
+```
+php bin/console make:entity User
+```
+
+(note : une valeur unique est demandé : laisser en email pour avoir un champ unique pour chaque user)
+
 - migration (vérification + doctrine):
 ```
 php bin/console make:migration
