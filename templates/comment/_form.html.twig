@@ -1,4 +1,6 @@
 {{ form_start(form) }}
     {{ form_widget(form) }}
-    <button class="btn">{{ button_label|default('Save') }}</button>
+    <!-- <button class="btn">{#{{ button_label|default('Save') }}#}</button> -->
+    <div class="col-12 d-flex justify-content-end">
+      <a href="{{ path('comment_admin_index') }}" class="btn btn-outline-danger m-3">Annuler</a>
 {{ form_end(form) }}

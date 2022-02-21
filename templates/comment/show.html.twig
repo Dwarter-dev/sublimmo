@@ -3,24 +3,33 @@
 {% block title %}Comment{% endblock %}
 
 {% block body %}
-    <h1>Comment</h1>
+    <h1>Commentaire</h1>
 
     <table class="table">
         <tbody>
             <tr>
                 <th>Id</th>
                 <td>{{ comment.id }}</td>
+                <td></td>
             </tr>
             <tr>
-                <th>Comment</th>
+                <th>Commentaire</th>
                 <td>{{ comment.comment }}</td>
+                <td><a href="{{ path('comment_edit', {'id': comment.id}) }}">Modifier</a> <i class="fas fa-pen-square"></i></td>
+            </tr>
+            <tr>
+                <th>Maison</th>
+                <td>{{ comment.maison.title }}</td>
+                <td></td>
             </tr>
         </tbody>
     </table>
 
-    <a href="{{ path('comment_index') }}">back to list</a>
+    <div class="d-flex justify-content-end my-5">
+      <a href="{{ path('comment_admin_index') }}" class="btn btn-outline-success m-3">Retour en arrière</a>
+      {{ include('comment/_delete_form.html.twig') }}
+      <button class="btn btn-danger m-3">Supprimer</button>
+      </form>
+    </div>
 
-    <a href="{{ path('comment_edit', {'id': comment.id}) }}">edit</a>
-
-    {{ include('comment/_delete_form.html.twig') }}
 {% endblock %}

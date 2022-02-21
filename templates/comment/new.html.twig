@@ -3,9 +3,11 @@
 {% block title %}New Comment{% endblock %}
 
 {% block body %}
-    <h1>Create new Comment</h1>
+    <h1>Créer un nouveau Commentaire</h1>
 
     {{ include('comment/_form.html.twig') }}
 
-    <a href="{{ path('comment_index') }}">back to list</a>
+    <button class="btn btn-outline-success m-3">Créer</button>
+    </div>
+
 {% endblock %}
