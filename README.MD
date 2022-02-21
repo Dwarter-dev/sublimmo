@@ -93,6 +93,7 @@ composer install
 ```
 
 ## Supprimer un package
+
 - Concerne uniquement le pack encore)
 ```
 composer remove [package présent dans composer.json]
@@ -100,9 +101,15 @@ composer remove symfony/webpack-encore-bundle
 ```
 
 ## CONTROLER
+
 - Pour créer une nouvelle page, on utilise un controller (note, pour accéder à cette page, on rajoute le nom du dossier dans la barre d'adresse, ex : si le nom est Home, dans le lien on aura ...public/Home)
 ```
 php bin/console make:controller nom_du_fichier
+```
+
+- Générer un CRUD (ex : comment)
+```
+php bin/console make:crud nom_de_l_entité
 ```
 
 ## BASE DE DONNÉES
@@ -165,4 +172,72 @@ php bin/console doctrine:fixtures:load --append
 - bundle pour générer de fausses données :
 ```
 composer require fakerphp/faker
+```
+
+## ROUTER
+
+- voir toutes les routes :
+```
+php bin/console debug:router
+```
+- mise en forme de la route (vérifie que la route existe dans le Controller)
+```
+php bin/console route:match /url_de_la_route
+```
+
+## FORMULAIRE
+
+- créer le formulaire :
+```
+php bin/console make:form nom_du_formulaire
+```
+- mise en forme des formulaires avec un thème (config/packages/twig.yaml) :
+```
+twig:
+    form_themes: ['bootstrap_5_layout.html.twig']
+```
+
+## REGISTER (gestion de l'admin)
+
+- créer l'entité User (nom + préciser la valeur unique) :
+```
+php bin/console make:user
+```
+- ajouter des champs à l'entité User  :
+```
+php bin/console make:entity user
+```
+- migration (habituelle)
+- créer le formulaire d'inscription
+```
+php bin/console make:registration-form
+```
+- Installer le package manquant
+```
+composer require symfonycasts/verify-email-bundle
+```
+- modifier la dernière redirection après la vérification de l'adresse mail (RegistrationController::verifyUserEmail())
+- gérer l'affichage des messages flash (register.html.twig, ...)
+- personnaliser le formulaire, le controller et les templates
+- migration pour gérer la propriété User::isVerified
+
+## EMAIL
+
+- installer le mailer :
+```
+composer require symfony/mailer
+```
+- installer le package tiers (uniquement les mails google, voir doc → mailer, 3rd party transport):
+```
+composer require symfony/
+```
+- dans les paramètres du compte Google => Sécurité => Connexion à Google : activer la validation en deux étapes
+- créer un nouveau mot de passe d'application (autre, sublimmo)
+- .env : MAILER_DSN=gmail://USERNAME:PASSWORD@default
+
+## COMMANDES IMPORTANTES
+
+- vider le cache :
+```
+php bin/console cache:clear
 ```
