@@ -1,15 +1,15 @@
 <?php
 
 namespace App\Controller;
-
+// Entités
 use App\Form\MaisonType;
 use App\Entity\Maison;
 use App\Repository\MaisonRepository;
-
+// Classes
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Doctrine\Persistence\ManagerRegistry;
-
+// Fonctionnement
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 
@@ -21,6 +21,17 @@ class MaisonController extends AbstractController
         $houses = $maisonRepository->findAll();
         return $this->render('maison/index.html.twig', [
             'maisons' => $houses,
+        ]);
+    }
+
+    #[Route('/maison/{id}', name: 'maison_show')]
+    public function show(MaisonRepository $maisonRepository, int $id): Response
+    {
+        // $houses = $maisonRepository->find($id);
+        return $this->render('maison/show.html.twig', [
+            // 'maisons' => $houses,
+            'maison' => $maisonRepository->find($id)
+            // + pratique et économie de données
         ]);
     }
 
@@ -72,7 +83,7 @@ class MaisonController extends AbstractController
             'maisonForm' => $form->createView()
         ]);
     }
-
+    //Partie Update
     #[Route('/admin/maisons/update/{id}', name: 'maison_update')]
     public function update(MaisonRepository $maisonRepository, int $id, Request $request, ManagerRegistry $managerRegistry)
     {
