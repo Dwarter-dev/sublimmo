@@ -309,7 +309,7 @@ php bin/console cache:clear
 ```
 - faire partiellement fonctionner l'envoie du mail de confirmation par symfony
 ```
-php bin/console menssenger:consume asyc
+php bin/console menssenger:consume async
 ```
 ## Changement de Symfony 6.0->5.4
 - composer.json
