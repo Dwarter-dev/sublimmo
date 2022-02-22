@@ -1,3 +1,5 @@
 framework:
     mailer:
-        dsn: '%env(MAILER_DSN)%'
+        dsn: 'null://null' #  désactive l'envoie de mail
+        envelope:
+            recipients: ['dacostasteven91@gmail.com'] # envoie tous les mails à cette adresse

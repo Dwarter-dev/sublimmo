@@ -221,6 +221,18 @@ composer require symfonycasts/verify-email-bundle
 - personnaliser le formulaire, le controller et les templates
 - migration pour gérer la propriété User::isVerified
 
+- Installer Rollerworks (pour vérifier la sécurité du mdp)
+```
+composer require rollerworks/password-strength-bundle
+```
+-dans le formulaire
+```
+use Rollerworks\...\PasswordStrength;
+....
+new PasswordStrength
+```
+- y ajouter les contraintes souhaitées
+
 ## EMAIL
 
 - installer le mailer :
@@ -235,9 +247,101 @@ composer require symfony/
 - créer un nouveau mot de passe d'application (autre, sublimmo)
 - .env : MAILER_DSN=gmail://USERNAME:PASSWORD@default
 
+- voir les mails dans la toolbar (config/packages/dev/web__profiler.yaml) :
+```YAML
+web_profiler:
+    intercept_redirects: true # intercepte les redirections
+```
+- config/packages/mailer.yaml
+```YAML
+dsn: 'null://null' #  désactive l'envoie de mail
+envelope:
+    recipients: ['dacostasteven91@gmail.com'] # envoie tous les mails à cette adresse
+```
+## LOGIN
+- installer le package :
+```
+php bin/console make:auth
+```
+- 1
+- LoginFormAuthentificator
+- SecurityController
+- yes
+
+- Modifier la route d'envoie après la connexion de l'utilisateur (src → security → LoginForm...)
+```
+return new RedirectResponse($this->urlGenerator->generate('admin'));
+```
+- pour se deconnecter
+```
+<a href="{{path('app_logout')}}"></a>
+```
+
+## SÉCURITÉ - DROITS - ACCÈS - HIERARCHIE
+
+- dans config/packages/security.yaml, décommenter :
+```
+access_control:
+      - { path: ^/admin, roles: ROLE_ADMIN }
+```
+- Si on veux modifier les accès aux pages selon un rôle :
+```
+- { path: ^/nom_de_la_page, roles: ROLE_NOM }
+```
+- Si on veux restructurer les valeurs des roles :
+```
+role_hierarchy :
+  ROLE_NOM_1: ROLE_NOM_2
+ex : ROLE_ADMIN: ROLE_USER => Admin = Admin + User
+```
+- afficher du code selon un rôle
+```
+{% if is_granted('LE_ROLE') %}
+  [le code ici]
+{% endif %}
+```
+
 ## COMMANDES IMPORTANTES
 
 - vider le cache :
 ```
 php bin/console cache:clear
 ```
+- faire partiellement fonctionner l'envoie du mail de confirmation par symfony
+```
+php bin/console menssenger:consume asyc
+```
+## Changement de Symfony 6.0->5.4
+- composer.json
+```
+1. [tout les fichier qui on un attribut 6.0] → 5.4
+2. Supprimer "symfony/doctrine-messenger": "5.4.*", (pour éviter qu'il le réinstalle)
+```
+- Supprimer les dossiers : var et vendor
+- .env :
+ ```
+Supprimer symfony/webapp-meta et symfony/messenger
+ ```
+- enfin : composer update → erreur normale
+- Ajouter dans User.php
+```
+    /**
+     * A visual identifier that represents this user.
+     *
+     * @see UserInterface
+     */
+    public function getUsername(): string
+    {
+        return (string) $this->email;
+    }
+
+    /**
+     * Returning a salt is only needed, if you are not using a modern
+     * hashing algorithm (e.g. bcrypt or sodium) in your security.yaml.
+     *
+     * @see UserInterface
+     */
+    public function getSalt(): ?string
+    {
+        return null;
+    }

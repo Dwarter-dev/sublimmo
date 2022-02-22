@@ -1,0 +1,61 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Contact !{% endblock %}
+
+{% block body %}
+
+<header class="container-fluid p-5 text-center bg-light">
+  <h1>SUBL'IMMO - Toutes les Maisons</h1>
+  <h2>L'agence Immobilière 100% en ligne et accesible</h2>
+</header>
+
+<div class="row"> <!-- On affichera les messages d'erreurs-->
+  <div class="col-8 offset-2">
+    {% for label, messages in app.flashes %}
+        {% for message in messages %}
+            <div class="flash-{{ label }} bg-{{ label }} text-light p-3 mb-5 rounded">
+                {{ message }}
+            </div>
+        {% endfor %}
+    {% endfor %}
+  </div>
+</div>
+
+<main class="container-fluid">
+
+
+  {{ form_start(contactForm) }}
+    <div class="row">
+      <div class="col-3 offset-3 mb-3">
+        {{ form_row(contactForm.prenom) }}
+      </div>
+
+      <div class="col-3 mb-3">
+        {{ form_row(contactForm.nom) }}
+      </div>
+
+      <div class="col-6 offset-3 mb-3">
+        {{ form_row(contactForm.email) }}
+      </div>
+
+      <div class="col-6 offset-3 mb-3">
+        {{ form_row(contactForm.objet) }}
+      </div>
+
+      <div class="col-6 offset-3 mb-3">
+        {{ form_row(contactForm.message) }}
+      </div>
+
+      <div class="col-6 offset-3 mb-3">
+        {{ form_row(contactForm.fichier) }}
+      </div>
+
+      <div class="col-6 offset-3 text-end">
+        <input type="submit" class="btn btn-primary" value="Envoyer">
+      </div>
+
+    </div>
+  {{ form_end(contactForm) }}
+
+</main>
+{% endblock %}
