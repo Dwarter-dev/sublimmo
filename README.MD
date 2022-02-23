@@ -277,6 +277,21 @@ return new RedirectResponse($this->urlGenerator->generate('admin'));
 <a href="{{path('app_logout')}}"></a>
 ```
 
+## PAIEMENT STRIPE
+
+- créer un controller (et la vue associée)
+- ajouter le script à la page de paiement (front) :
+```HTML
+<script src="https://js.stripe.com/v3/"></script>
+```
+- installer le bundle (back) :
+```
+composer require stripe/stripe-php
+```
+- ajouter le lien sur la page panier
+-
+
+
 ## SÉCURITÉ - DROITS - ACCÈS - HIERARCHIE
 
 - dans config/packages/security.yaml, décommenter :
@@ -299,6 +314,10 @@ ex : ROLE_ADMIN: ROLE_USER => Admin = Admin + User
 {% if is_granted('LE_ROLE') %}
   [le code ici]
 {% endif %}
+```
+- enfin
+```
+composer update
 ```
 
 ## COMMANDES IMPORTANTES
@@ -345,3 +364,4 @@ Supprimer symfony/webapp-meta et symfony/messenger
     {
         return null;
     }
+```
