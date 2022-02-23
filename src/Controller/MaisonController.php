@@ -179,4 +179,25 @@ class MaisonController extends AbstractController
       // Redirection
       return $this->redirectToRoute('admin_maison_index');
     }
+    // #[Route('/search/result', name: 'admin_maison_index')]
+    // public function adminIndex(MaisonRepository $maisonRepository): Response
+    // {
+    //   $form = $this->createForm(MaisonSearchType::class, $maison);
+    //   $form->handleRequest($request);
+    //
+    //   if ($form->isSubmitted() && $form->isValid()) { // vérifie si le formulaire a été envoyé et est valide
+    //       $rooms = $form['piece']->getData();
+    //       $bedrooms = $form['chambre']->getData();
+    //       $surface = $form['surface']->getData();
+    //       $budjet = $form['budjet']->getData();
+    //       $houses = $maisonRepository->search($rooms, $bedrooms, $surface, $budjet);
+    //       return $this->render('maison/search.html.twig', [
+    //           'searchForm' => $form->createView()
+    //       ]);
+    //   }
+    //
+    //   return $this->render('admin/maisons.html.twig', [
+    //       'maisons' => $houses
+    //   ]);
+    // }
 }

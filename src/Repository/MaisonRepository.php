@@ -48,6 +48,26 @@ class MaisonRepository extends ServiceEntityRepository
     }
     */
 
+  /**
+   * @return Maison[] Return an array of X Maison objects ordered by somes parameters insted id
+   */
+   public function search(int $rooms = 0, int $bedrooms = 0, int $surface = 0, int $budjet = 0)
+   {
+     return $this->createQueryBuilder('fls') // fls est un alias
+      // on cherche un id supérieur à une certaine valeur
+      ->andwhere('fls.rooms >= :rooms') // 1. si les rooms recherchés sont = ou supérieur à X
+      ->andwhere('fls.bedrooms >= :bedrooms') // 2. si les bedrooms recherchés sont = ou supérieur  à X
+      ->andwhere('fls.surface >= :surface') // 3. si les surfaces recherchés sont = ou supérieur à X
+      ->andwhere('fls.price <= :budget') // 4. si le prix est = ou inférieur à X
+      ->setParameter('rooms', $rooms)
+      ->setParameter('bedrooms', $bedrooms) // On défini la valeur
+      ->setParameter('surface', $surface)
+      ->setParameter('budget', $price)
+      ->orderBy('fls.id', 'ASC') // tri en ordre croissant
+      ->getQuery() // requête
+      ->getResult(); // résultats(s)
+   }
+
    /**
     * @return Maison[] Returns an array of 6 Maison objects ordered by latest insted id
     */
