@@ -1,0 +1,31 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello PayementController!{% endblock %}
+
+{% block body %}
+
+<main>
+
+  <div class="row"> <!-- On affichera les messages d'erreurs-->
+    <div class="col-8 offset-2">
+      {% for label, messages in app.flashes %}
+          {% for message in messages %}
+              <div class="flash-{{ label }} bg-{{ label }} text-light p-3 mb-5 rounded">
+                  {{ message }}
+              </div>
+          {% endfor %}
+      {% endfor %}
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-8 offset-2">
+      <h2 class="mb-5">Payement accepté</h2>
+      <p>Le paiement a été accepté et nous vous en remercions.</p>
+      <p>Une facture vous sera envoyée à l'adresse email communiquée lors de votre achat. Ce processus peut prendre quelques minutes. Si toutefois vous ne recevez votre facture, vous pouvez contacter un administrateur du site via le <a href="{{ path('contact') }}" class="text-primary">Formulaire de contact</a>.
+      <a href="{{ path('cart_index') }}" class="text-success"> Retour au panier</a></p>
+    </div>
+  </div>
+
+</main>
+{% endblock %}

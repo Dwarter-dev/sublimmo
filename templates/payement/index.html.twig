@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}paiement{% endblock %}
+
+{% block body %}
+
+<script src="https://js.stripe.com/v3/"></script> <!-- script pour récupérer le système de stripe-->
+
+<script>
+        var stripe = Stripe('pk_test_51KWKj1Bpbu05Ajz6M97g48uxo5wCN2gmHgsTBPBfYCQot91MedwxuJWqCzhMwN83eqHonCikCq5Hrn7CU4OSpJl70061Rs8j5T');
+        stripe.redirectToCheckout({
+            sessionId: '{{ sessionId }}'
+        })
+</script>
+{% endblock %}
